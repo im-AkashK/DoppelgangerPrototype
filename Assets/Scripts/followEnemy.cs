@@ -51,7 +51,7 @@ public class followEnemy : MonoBehaviour
 
     private NavMeshAgent agent;
     private Animator anim;
-    public Transform target;
+    [HideInInspector]public Transform target;
 
     private float timer;
 
