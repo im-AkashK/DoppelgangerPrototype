@@ -13,6 +13,7 @@ public class SpawnProjectile : MonoBehaviour
    public float reloadTime = 1.0f;
    public int currentAmmo;
    private float lastShotTime = 0f;
+  
 
    private GameObject effectToSpawn;
 
@@ -68,6 +69,8 @@ public class SpawnProjectile : MonoBehaviour
          vfx = Instantiate(effectToSpawn , firePoint.transform.position , firePoint.transform.rotation);
          currentAmmo--;
          UpdateAmmoText();
+         Destroy(vfx , 3f);
+        
       }
       else
       {

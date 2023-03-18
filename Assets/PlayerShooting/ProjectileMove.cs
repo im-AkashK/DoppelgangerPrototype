@@ -25,10 +25,10 @@ public class ProjectileMove : MonoBehaviour
             Destroy(gameObject); // Destroy the projectile as well
         }
 
-       /* else if(other.CompareTag("Walls"))
+       if(other.CompareTag("Walls"))
         {
             Destroy(gameObject);
-        } */
+        } 
     }
    
 }

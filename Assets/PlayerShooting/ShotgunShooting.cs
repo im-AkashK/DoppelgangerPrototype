@@ -1,8 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShotgunShooting : MonoBehaviour
 {
-    
     public GameObject shotgunProjectile; // Assign a particle system for the shotgun projectile
     public Transform shootPoint; // Assign the transform where the shotgun projectile will spawn
     public float projectileSpeed = 20f; // Set the speed of the projectile
@@ -10,36 +10,51 @@ public class ShotgunShooting : MonoBehaviour
     public float projectileLifetime = .2f;
 
     private int ammoCount = 6; // Set the initial ammo count
+    public Text ammoText;
+
+    void Start()
+    {
+        UpdateAmmoText();
+    }
 
     void Update()
+{
+    if (Input.GetButtonDown("Fire1") && ammoCount > 0)
     {
-        if (Input.GetButtonDown("Fire1") && ammoCount > 0)
+        // Play the muzzle flash particle system
+
+        // Spawn multiple shotgun projectile particle systems
+        for (int i = 0; i < 4; i++)
         {
-            // Play the muzzle flash particle system
-           
+            var projectile = Instantiate(shotgunProjectile, shootPoint.position, shootPoint.rotation);
 
-            // Spawn the shotgun projectile particle system
-            var projectile = Instantiate(shotgunProjectile, shootPoint.position, Quaternion.identity);
-
-            // Set the velocity of the projectile
-            Vector3 velocity = shootPoint.forward * projectileSpeed;
-            velocity = Quaternion.Euler(Random.Range(-projectileSpread, projectileSpread), Random.Range(-projectileSpread, projectileSpread), 0) * velocity;
-            projectile.GetComponent<Rigidbody>().velocity = velocity;
+            // Set the rotation of each projectile to a spread angle
+            projectile.transform.rotation *= Quaternion.Euler(Random.Range(-projectileSpread, projectileSpread), Random.Range(-projectileSpread, projectileSpread), 0);
+            UpdateAmmoText();
 
             Destroy(projectile, projectileLifetime);
-
-            // Decrement the ammo count
-            ammoCount--;
         }
 
-        if(ammoCount == 0 )
-        {
-            Reload();
-        }
+        // Decrement the ammo count
+        ammoCount--;
     }
+
+    if (ammoCount == 0)
+    {
+        Reload();
+    }
+}
+
+
 
     public void Reload()
     {
         ammoCount = 6; // Reset the ammo count
+        UpdateAmmoText();
+    }
+
+    void UpdateAmmoText()
+    {
+        ammoText.text = ammoCount.ToString();
     }
 }

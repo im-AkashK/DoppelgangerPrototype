@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4617014197845790465}
   - component: {fileID: 7058262004613964914}
   m_Layer: 10
-  m_Name: Pistolvfx
+  m_Name: SniperVfx
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bae80ed6994804b8187772d650c48e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
 --- !u!65 &4617014197845790465
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9777,7 +9777,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.15
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
