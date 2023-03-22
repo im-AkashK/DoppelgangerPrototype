@@ -12,6 +12,7 @@ TagManager:
   - Flask
   - Walls
   - Firepoint
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Border
   - Bullet
   - Walls
-  - 
+  - Gun
   - 
   - 
   - 
